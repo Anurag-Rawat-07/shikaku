@@ -1,4 +1,8 @@
 from fastapi import FastAPI
+from dotenv import load_dotenv
+from routes.analyse import router as analyse_router
+
+load_dotenv()
 
 app=FastAPI(
     title="shikaku",
@@ -18,3 +22,6 @@ async def root():
             "GET/analyse/{image_id}":"Get the analysis result of a specific image by its ID",
         }
     }
+
+
+app.include_router(analyse_router)
